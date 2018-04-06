@@ -1,8 +1,9 @@
-TACC
--------
+UPACC
+--------
 
-Trial Accessory for Character Creation
+Utility for Player and Character Creation
 
------
 
-An attempt at a character creation tool for use with role playing adventure games.
+This is intended to be a relatively simple tool for character creation in
+roleplaying/adventure games.  Character data will be saved as, and loaded from,
+JSON files.
