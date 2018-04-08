@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
 /dist/
-/*.egginfo
+/*.egg-info
 /*.egg
+src/*.egg-info
+eggs
