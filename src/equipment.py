@@ -34,3 +34,39 @@ class Equipment:
         # is a valid available slot
         if item.slot in self.slots.keys():
             self.slots[item.slot] = item
+
+        else:
+            raise KeyError('Invalid slot')
+
+
+
+class Armor(Equipment):
+    """
+    Attributes and methods for the Armor subclass
+    """
+
+    def __init__(self):
+        self.slots = {'head' : None,
+        'torso' : None,
+        'arms' : None,
+        'legs' : None,
+        'feet' : None}
+
+class Weapons(Equipment):
+    """
+    Attributes and methords for the Weapons subclass
+    """
+
+    def __init__(self):
+        self.slots = {'left' : None, 'right' : None}
+
+    def _equip_item(self, item):
+
+        if item.slot in self.slots.keys():
+            self.slots[item.slot] = item
+
+        elif item.slot == 'both':
+            for slot in self.slots:
+                slot = item
+        else:
+            raise KeyError('Invalid Slot')
