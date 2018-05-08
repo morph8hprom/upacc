@@ -4,44 +4,97 @@
 File used to define attribute class and subclasses
 """
 
-class Attribute():
-    def __init__(value = 0):
+class Attrib():
+    def __init__(self, value = 0):
         self.value = value
 
 
-class Strength(Attribute):
+class Strength(Attrib):
     """
-    Attribute used for attacks and brute strength interactions
+    Attrib used for attacks and brute strength interactions
     """
-    def __init__(value = 0):
+    _name = 'Strength'
+    def __init__(self, value = 0):
         super().__init__(value)
 
-class Intelligence(Attribute):
+class Intelligence(Attrib):
     """
-    Attribute used for magic and problem solving interactions
+    Attrib used for magic and problem solving interactions
     """
-    def __init__(value = 0):
+    _name = 'Intelligence'
+    def __init__(self, value = 0):
+
         super().__init__(value)
 
-class Charisma(Attribute):
+class Charisma(Attrib):
     """
-    Attribute used for speech interactions
+    Attrib used for speech interactions
     """
-    def __init__(value = 0):
+    _name = 'Charisma'
+    def __init__(self, value = 0):
+
         super().__init__(value)
 
-class Dexterity(Attribute):
+class Dexterity(Attrib):
     """
-    Attribute used for speed and agility interactions
+    Attrib used for speed and agility interactions
     """
-    def __init__(value = 0):
+    _name = 'Dexterity'
+    def __init__(self, value = 0):
+
         super().__init__(value)
 
-class Defense(Attribute):
+class Defense(Attrib):
     """
-    Attribute used for defense interactions
+    Attrib used for defense interactions
     """
-    def __init__(value = 0):
-        super().init(value)
+    _name = 'Defense'
+    def __init__(self, value = 0):
+        self.name = 'Defense'
+        super().__init__(value)
 
-class
+class Attriblist:
+
+    def __init__(self):
+        self.attributes = {}
+
+    def __iter__(self):
+        return iter(self.attributes.items())
+
+    def __len__(self):
+        return len(self.attributes)
+
+    def __contains__(self, attrib):
+        return attrib in self.attributes.values()
+
+    def __getitem__(self, attrib):
+        return self.attributes[attrib]
+
+    def __setitem__(self, attrib, num):
+        try:
+            self.attributes[attrib].value = num
+        except TypeError:
+            print("Value must be integer")
+
+
+
+
+
+
+
+
+def build_attrib_list():
+    attrib_list = Attriblist()
+    for i in Attrib.__subclasses__():
+        attrib_list.attributes[i._name] = i()
+    return attrib_list
+
+
+if __name__ == '__main__':
+    print(Attrib.__subclasses__())
+    attrib_list = build_attrib_list()
+
+    print(attrib_list['Strength'].value)
+    attrib_list['Strength'] = 10
+    print(attrib_list['Strength']._name)
+    print(attrib_list['Strength'].value)

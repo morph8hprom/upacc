@@ -10,3 +10,4 @@ class Character():
         self.attributes = attributes
         self.armor = armor
         self.weapons = weapons
+    
