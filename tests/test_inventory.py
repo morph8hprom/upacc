@@ -2,7 +2,7 @@
 
 import unittest
 import json
-from src.item import *
+import gim
 from src.inventory import *
 
 
