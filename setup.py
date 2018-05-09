@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(name = "UPACC",
 version = '0.1.0',
 python_requires = '>=3',
-install_requires = ['cmd2>=0.8.2'],
+install_requires = ['cmd2>=0.8.2','gim>=0.1.0'],
 description = 'Utility for character and player creation in a roleplaying/adventure game',
 url = 'https://www.github.com/morph8hprom/upacc',
 author = 'Devon Blackburn',
