@@ -2,8 +2,8 @@
 
 import unittest
 import json
-import gim
-from src.inventory import *
+from gim import item
+from upacc import inventory
 
 
 class InventoryAttributesTestCase(unittest.TestCase):
@@ -22,15 +22,15 @@ class InventoryAttributesTestCase(unittest.TestCase):
         start_id = 1
         num_of_items = 5
 
-        cls.all_items = item_d(start_id, num_of_items)
+        cls.all_items = item.item_d(start_id, num_of_items)
 
-        cls.weapon_dict = weapon_d(cls.all_items)
+        cls.weapon_dict = item.weapon_d(cls.all_items)
 
-        cls.armor_dict = armor_d(cls.all_items)
+        cls.armor_dict = item.armor_d(cls.all_items)
 
-        cls.consumable_dict = consumable_d(cls.all_items)
+        cls.consumable_dict = item.consumable_d(cls.all_items)
 
-        cls.inventory = Inventory()
+        cls.inventory = inventory.Inventory()
 
 
     def test_inventory_has_items(self):
@@ -56,15 +56,15 @@ class InventoryMethodsTestCase(unittest.TestCase):
         start_id = 1
         num_of_items = 5
 
-        cls.all_items = item_d(start_id, num_of_items)
+        cls.all_items = item.item_d(start_id, num_of_items)
 
-        cls.weapon_dict = weapon_d(cls.all_items)
+        cls.weapon_dict = item.weapon_d(cls.all_items)
 
-        cls.armor_dict = armor_d(cls.all_items)
+        cls.armor_dict = item.armor_d(cls.all_items)
 
-        cls.consumable_dict = consumable_d(cls.all_items)
+        cls.consumable_dict = item.consumable_d(cls.all_items)
 
-        cls.inventory = Inventory()
+        cls.inventory = inventory.Inventory()
 
     def test_inventory_len_returns_correct_number(self):
         a = self.inventory.__len__()

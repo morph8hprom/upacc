@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from item import *
+from gim import item
 
 """
 File used to define inventory class and related methods

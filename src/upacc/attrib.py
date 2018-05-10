@@ -94,7 +94,5 @@ if __name__ == '__main__':
     print(Attrib.__subclasses__())
     attrib_list = build_attrib_list()
 
-    print(attrib_list['Strength'].value)
-    attrib_list['Strength'] = 10
-    print(attrib_list['Strength']._name)
-    print(attrib_list['Strength'].value)
+    for i in attrib_list.attributes.values():
+        print(i)
