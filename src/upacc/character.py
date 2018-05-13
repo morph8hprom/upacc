@@ -7,7 +7,8 @@ File used to define Character class and Player and Nonplayer subclasses
 """
 
 class Character():
-    def __init__(self, name, desc, attributes, armor, weapons, player ):
+    def __init__(self, id, name, desc, attributes, armor, weapons, player ):
+        self.id = id
         self.name = name
         self.desc = desc
         self.attributes = attributes
@@ -15,15 +16,20 @@ class Character():
         self.weapons = weapons
         self.player = player
 
+    def __repr__(self):
+        return "{}({}, {}, {}, {}, {}, {}, {})".format(self.__class__.__name__,
+        self.id, self.name, self.desc, self.attributes, self.armor,
+        self.weapons, self.player)
+
 
 
 class Player(Character):
     def __init__(self, id, name, desc, attributes, armor, weapons, player):
-        super().__init__(name, desc, attributes, armor, weapons, player)
+        super().__init__(id, name, desc, attributes, armor, weapons, player)
 
 class Nonplayer(Character):
     def __init__(self, id, name, desc, attributes, armor, weapons, player):
-        super().__init__(name, desc, attributes, armor, weapons, player)
+        super().__init__(id, name, desc, attributes, armor, weapons, player)
 
 def build_character(id):
     """
@@ -58,10 +64,22 @@ def char_d(id, num_of_chars):
 
     return d
 
-def player_d(char_dict):
+def player_d(character_dict):
     """
-    Takes character dict as argument and filters out only player characters
+    Takes character dictionary as argument and filters out only Player instances
     """
     d = {}
-    for i in char_dict.values():
-        pass
+    for i in character_dict.values():
+        if i.player is True:
+            d[i.id] = i
+    return d
+
+def nonplayer_d(character_dict):
+    """
+    Takes character dictionary as argument and filters out only Nonplayer instances
+    """
+    d = {}
+    for i in character_dict.values():
+        if i.player is False:
+            d[i.id] = i
+    return d
