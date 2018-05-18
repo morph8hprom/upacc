@@ -2,8 +2,8 @@
 
 import unittest
 import json
-from gim import item
 from upacc import character_dict as ch_d
+
 
 class CharacterDictAttributeTestCase(unittest.TestCase):
     """
@@ -30,4 +30,59 @@ class CharacterDictAttributeTestCase(unittest.TestCase):
         self.assertTrue(att)
 
 class CharacterDictMethodTestCase(unittest.TestCase):
-    pass
+    """
+    Contains tests for CharacterDict methods
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Builds a test instance of ChracterDict
+        """
+        cls.test_char_d = ch_d.CharacterDict()
+
+
+    def test_build_char_method_for_player(self):
+        # Assumes that character data file with char_id has the attribute player = True
+        # if it does not, change char_id to a file which does
+
+        char_id = 1
+        test_char = self.test_char_d._build_character(char_id)
+        att = isinstance(test_char, ch_d.ch.Player)
+        self.assertTrue(att)
+
+    def test_build_char_method_for_nonplayer(self):
+        # Assumes that character data file with char_id has the attribute player = False
+        # if it does not, change char_id to a file which does
+
+        char_id = 2
+        test_char = self.test_char_d._build_character(char_id)
+        att = isinstance(test_char, ch_d.ch.Nonplayer)
+        self.assertTrue(att)
+
+
+
+
+    def test_update_main_dict(self):
+        self.test_char_d._num_of_chars = 3
+        pre_update = len(self.test_char_d.all_chars)
+        self.test_char_d._update_main_dict()
+        post_update = len(self.test_char_d.all_chars)
+        self.assertNotEqual(pre_update, post_update)
+
+    def test_update_secondary_dicts_player(self):
+        test_char = ch_d.ch.Character(player = True)
+        self.test_char_d.all_chars[test_char.id] = test_char
+        pre_update = len(self.test_char_d.player_chars)
+        self.test_char_d._update_secondary_dicts()
+        post_update = len(self.test_char_d.player_chars)
+        self.assertNotEqual(pre_update, post_update)
+
+
+    def test_update_secondary_dicts_nonplayer(self):
+        test_char = ch_d.ch.Character(player = False)
+        self.test_char_d.all_chars[test_char.id] = test_char
+        pre_update = len(self.test_char_d.nonplayer_chars)
+        self.test_char_d._update_secondary_dicts()
+        post_update = len(self.test_char_d.nonplayer_chars)
+        self.assertNotEqual(pre_update, post_update)
