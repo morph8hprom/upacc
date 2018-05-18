@@ -8,15 +8,24 @@ File used to define CharacterDict class and it's methods
 
 class CharacterDict():
     def __init__(self):
+        # Dictionary containing reference to all characters
         self.all_chars = {}
+        # Dictionary containing reference to only player characters
         self.player_chars = {}
+        # Dictonary containing reference to only nonplayer characters
         self.nonplayer_chars = {}
 
         self._id = 1
         self._num_of_chars = 2
 
-    def __repr__(self):
-        return "{}".format(.join[i.name for i in self.all_chars.values()])
+    # def __repr__(self):
+    #     repr = {}
+    #     for i in self.all_chars.values():
+    #         repr['id'] = i.id
+    #         repr['name'] = i.name
+    #         repr['player'] = i.player
+    #     # return '{}'.format(.join([x, a for x, a in ]))
+
 
     def __iter__(self):
         return iter(self.all_chars.items())

@@ -7,7 +7,8 @@ File used to define Character class and Player and Nonplayer subclasses
 """
 
 class Character():
-    def __init__(self, id, name, desc, attributes, armor, weapons, player ):
+    def __init__(self, id = '1', name = 'test', desc = 'test desc',
+                attributes = None, armor = None , weapons = None , player = True):
         self.id = id
         self.name = name
         self.desc = desc
