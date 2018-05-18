@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pkg_resources import resource_string
+from upacc import character as ch
 import json
 
 """
@@ -17,6 +18,8 @@ class CharacterDict():
 
         self._id = id
         self._num_of_chars = num_of_chars
+        self._update_main_dict()
+        self._update_secondary_dicts()
 
     # def __repr__(self):
     #     repr = {}
@@ -39,7 +42,7 @@ class CharacterDict():
     def __getitem__(self, char):
         return self.all_chars[char.id]
 
-    def _build_character(id):
+    def _build_character(self, id):
         """
         Gathers character data from json file and returns Character instance.
         """
@@ -48,19 +51,20 @@ class CharacterDict():
         d = json.loads(jsontext.decode('utf-8'))
         d['id'] = id
         if d['player'] == False:
-            char = Nonplayer(**d)
+            char = ch.Nonplayer(**d)
             return char
         elif d['player'] == True:
-            char = Player(**d)
+            char = ch.Player(**d)
             return char
         else:
             raise ValueError('player key must be True or False')
 
 
     def _update_main_dict(self):
+        d = {}
         for i in range(self._id, self._num_of_chars):
             try:
-                d[i] = _build_character(i)
+                d[i] = self._build_character(i)
             except FileNotFoundError:
                 print('File not found.  Please check to make sure it exists')
 

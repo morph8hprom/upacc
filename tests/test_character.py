@@ -2,7 +2,6 @@
 
 import unittest
 import json
-from gim import item
 from upacc import character as ch
 
 
