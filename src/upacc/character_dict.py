@@ -7,7 +7,7 @@ File used to define CharacterDict class and it's methods
 """
 
 class CharacterDict():
-    def __init__(self):
+    def __init__(self, id = 1, num_of_chars = 2):
         # Dictionary containing reference to all characters
         self.all_chars = {}
         # Dictionary containing reference to only player characters
@@ -15,8 +15,8 @@ class CharacterDict():
         # Dictonary containing reference to only nonplayer characters
         self.nonplayer_chars = {}
 
-        self._id = 1
-        self._num_of_chars = 2
+        self._id = id
+        self._num_of_chars = num_of_chars
 
     # def __repr__(self):
     #     repr = {}
