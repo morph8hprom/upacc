@@ -26,17 +26,10 @@ class Equipment:
 
     def __getitem__(self, item):
         # Overwrites __getitem__ method for easy access to individual items
-        return self.slots[item.slot]
+        return self.slots[item._slot]
 
 
-    def _equip_item(self, item):
-        # Checks to make sure that the slot attribute of the item
-        # is a valid available slot
-        if item.slot in self.slots.keys():
-            self.slots[item.slot] = item
 
-        else:
-            raise KeyError('Invalid slot')
 
 
 
@@ -52,6 +45,15 @@ class Armor(Equipment):
         'legs' : None,
         'feet' : None}
 
+    def _equip_item(self, item):
+        # Checks to make sure that the slot attribute of the item
+        # is a valid available slot
+        if item._slot in self.slots.keys():
+            self.slots[item._slot] = item
+
+        else:
+            raise KeyError('Invalid slot')
+
 class Weapons(Equipment):
     """
     Attributes and methords for the Weapons subclass
@@ -60,13 +62,13 @@ class Weapons(Equipment):
     def __init__(self):
         self.slots = {'left' : None, 'right' : None}
 
-    def _equip_item(self, item):
-
-        if item.slot in self.slots.keys():
-            self.slots[item.slot] = item
-
-        elif item.slot == 'both':
-            for slot in self.slots:
-                slot = item
+    def _equip_item(self, item, slot = 'left'):
+        if item.two_handed == False:
+            try:
+                self.slots[slot] = item
+                item._slot = slot
+            except KeyError:
+                print("Slot must be left or right")
         else:
-            raise KeyError('Invalid Slot')
+            self.slots['left'] = self.slots['right'] = item
+            item._slot = slot

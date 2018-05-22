@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import unittest
-import json
 from upacc import character as ch
 
 
