@@ -18,7 +18,7 @@ class EquipmentAttributesTestCase(unittest.TestCase):
 
     def test_equipment_has_slots(self):
         att = hasattr(self.test_equip, 'slots')
-        self.assertTrue
+        self.assertTrue(att)
 
 class ArmorAttributesTestCase(unittest.TestCase):
     """

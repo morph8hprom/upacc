@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from gim import item
 
 """
 File used to define inventory class and related methods
@@ -27,13 +26,31 @@ class Inventory():
 
     def __getitem__(self, item):
         # Overwrites __getitem__ method for easy access to individual items
-        return self.items[item.id]
+        return self.items[item.id]['item']
 
-    # def _get_quant(self, item_id):
-    #     # Returns the quantity of item
-    #     quant  = self.items[item_id][quant]
-    #     return quant
+    def _get_quant(self, item):
+        # Returns the quantity of item
+        quant  = self.items[item.id]['quant']
+        return quant
 
     def _add_item(self, item):
         # Adds item to inventory
-        self.items[item.id] = item
+        if item.id not in self.items:
+            self.items[item.id] = {}
+            self.items[item.id]['item'] = item
+            self.items[item.id]['quant'] = 1
+        else:
+            self.items[item.id]['quant'] += 1
+
+
+    def _drop_item(self, item):
+        # Checks that the quantity is 1
+        if self.items[item.id]['quant'] == 1:
+            try:
+                del self.items[item.id]
+            except KeyError:
+                print("Item not in inventory")
+        elif self.items[item.id]['quant'] >= 2:
+            self.items[item.id]['quant'] -= 1
+        else:
+            raise KeyError('Item not in inventory')
