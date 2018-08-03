@@ -36,11 +36,11 @@ class CharacterDict():
     def __len__(self):
         return len(self.all_chars)
 
-    def __contains__(self, char):
-        return char.id in self.all_chars
+    def __contains__(self, id):
+        return id in self.all_chars
 
-    def __getitem__(self, char):
-        return self.all_chars[char.id]
+    def __getitem__(self, id):
+        return self.all_chars[id]
 
     def _build_character(self, id):
         """
