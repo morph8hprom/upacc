@@ -25,8 +25,9 @@ class Character():
 
 
 class Player(Character):
-    def __init__(self, id, name, desc, attributes, armor, weapons, player):
+    def __init__(self, id, name, desc, attributes, armor, weapons, player, loc = None):
         super().__init__(id, name, desc, attributes, armor, weapons, player)
+        self.loc = loc
 
 class Nonplayer(Character):
     def __init__(self, id, name, desc, attributes, armor, weapons, player):
