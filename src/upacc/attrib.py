@@ -6,7 +6,7 @@ File used to define attribute class and subclasses
 
 class Attrib():
     def __init__(self, value = 0):
-        self.value = value
+        self._value = value
 
 
 class Strength(Attrib):
@@ -88,10 +88,3 @@ def build_attrib_list():
     for i in Attrib.__subclasses__():
         attrib_list.attributes[i._name] = i()
     return attrib_list
-
-
-if __name__ == '__main__':
-    print(Attrib.__subclasses__())
-    attrib_list = build_attrib_list()
-
-    print(attrib_list['Strength'])

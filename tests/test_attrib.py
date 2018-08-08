@@ -19,7 +19,7 @@ class AttribAttributesTestCase(unittest.TestCase):
 
     def test_attribs_have_value(self):
         for i in self.attribs:
-            att = hasattr(i ,'value')
+            att = hasattr(i ,'_value')
             self.assertTrue(att)
 
 

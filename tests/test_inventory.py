@@ -28,6 +28,7 @@ class InventoryMethodsTestCase(unittest.TestCase):
     def setUpClass(cls):
         cls.test_inventory = inv.Inventory()
         cls.test_item = I.Item()
+        cls.test_item_2 = I.Item(3)
 
     def test_add_item(self):
         self.test_inventory._add_item(self.test_item)
@@ -35,7 +36,7 @@ class InventoryMethodsTestCase(unittest.TestCase):
         self.assertEqual(att, self.test_item)
 
     def test_drop_item(self):
-        self.test_inventory._add_item(self.test_item)
+        self.test_inventory._add_item(self.test_item_2)
         pre_drop = len(self.test_inventory)
         self.test_inventory._drop_item(self.test_item)
         post_drop = len(self.test_inventory)

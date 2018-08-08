@@ -73,9 +73,9 @@ class CharacterDict():
 
     def _update_secondary_dicts(self):
         for i in self.all_chars.values():
-            if i.player == True:
-                self.player_chars[i.id] = i
-            elif i.player == False:
-                self.nonplayer_chars[i.id] = i
+            if i._player == True:
+                self.player_chars[i._id] = i
+            elif i._player == False:
+                self.nonplayer_chars[i._id] = i
             else:
                 raise ValueError('player key must be True or False')

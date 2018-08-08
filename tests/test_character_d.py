@@ -72,7 +72,7 @@ class CharacterDictMethodTestCase(unittest.TestCase):
 
     def test_update_secondary_dicts_player(self):
         test_char = ch_d.ch.Character(player = True)
-        self.test_char_d.all_chars[test_char.id] = test_char
+        self.test_char_d.all_chars[test_char._id] = test_char
         pre_update = len(self.test_char_d.player_chars)
         self.test_char_d._update_secondary_dicts()
         post_update = len(self.test_char_d.player_chars)
@@ -81,7 +81,7 @@ class CharacterDictMethodTestCase(unittest.TestCase):
 
     def test_update_secondary_dicts_nonplayer(self):
         test_char = ch_d.ch.Character(player = False)
-        self.test_char_d.all_chars[test_char.id] = test_char
+        self.test_char_d.all_chars[test_char._id] = test_char
         pre_update = len(self.test_char_d.nonplayer_chars)
         self.test_char_d._update_secondary_dicts()
         post_update = len(self.test_char_d.nonplayer_chars)

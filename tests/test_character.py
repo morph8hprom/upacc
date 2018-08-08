@@ -17,29 +17,29 @@ class CharacterAttributesTestCase(unittest.TestCase):
         cls.test_char = ch.Character()
 
     def test_character_has_id(self):
-        att = hasattr(self.test_char, 'id')
+        att = hasattr(self.test_char, '_id')
         self.assertTrue(att)
 
     def test_character_has_name(self):
-        att = hasattr(self.test_char, 'name')
+        att = hasattr(self.test_char, '_name')
         self.assertTrue(att)
 
     def test_character_has_desc(self):
-        att = hasattr(self.test_char, 'desc')
+        att = hasattr(self.test_char, '_desc')
         self.assertTrue(att)
 
     def test_character_has_attributes(self):
-        att = hasattr(self.test_char, 'attributes')
+        att = hasattr(self.test_char, '_attributes')
         self.assertTrue(att)
 
     def test_character_has_armor(self):
-        att = hasattr(self.test_char, 'armor')
+        att = hasattr(self.test_char, '_armor')
         self.assertTrue(att)
 
     def test_character_has_weapons(self):
-        att = hasattr(self.test_char, 'weapons')
+        att = hasattr(self.test_char, '_weapons')
         self.assertTrue(att)
 
     def test_character_has_player(self):
-        att = hasattr(self.test_char, 'player')
+        att = hasattr(self.test_char, '_player')
         self.assertTrue(att)
