@@ -57,6 +57,7 @@ class Attriblist:
 
     def __init__(self):
         self.attributes = {}
+        self._update_attributes()
 
     def __iter__(self):
         return iter(self.attributes.items())
@@ -76,15 +77,6 @@ class Attriblist:
         except TypeError:
             print("Value must be integer")
 
-
-
-
-
-
-
-
-def build_attrib_list():
-    attrib_list = Attriblist()
-    for i in Attrib.__subclasses__():
-        attrib_list.attributes[i._name] = i()
-    return attrib_list
+    def _update_attributes(self):
+        for i in Attrib.__subclasses__():
+            self.attributes[i._name] = i()

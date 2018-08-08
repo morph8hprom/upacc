@@ -10,11 +10,11 @@ class AttribAttributesTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """
-        Uses the build_attrib_list function to create an instance of
-        the Attriblist class and the various instances for each individual subclass
+        Creates an instance of Attriblist and the various instances of each
+        Attrib subclass.
         """
 
-        cls.attrib_list = attrib.build_attrib_list()
+        cls.attrib_list = attrib.Attriblist()
         cls.attribs = cls.attrib_list.attributes.values()
 
     def test_attribs_have_value(self):
@@ -35,7 +35,7 @@ class AttribMethodsTestCase(unittest.TestCase):
         the Attriblist class and the various instances for each individual subclass
         """
 
-        cls.attrib_list = attrib.build_attrib_list()
+        cls.attrib_list = attrib.Attriblist()
         cls.attribs = cls.attrib_list.attributes.values()
 
     def test_attrib_list_is_iterable(self):
