@@ -25,10 +25,12 @@ class Character():
 
 
 class Player(Character):
-    def __init__(self, id, name, desc, attributes, armor, weapons, player, loc = None):
+    def __init__(self, id = '1', name = 'test', desc = 'test desc',
+                attributes = None, armor = None , weapons = None , player = True, loc = None):
         super().__init__(id, name, desc, attributes, armor, weapons, player)
         self._loc = loc
 
 class Nonplayer(Character):
-    def __init__(self, id, name, desc, attributes, armor, weapons, player):
+    def __init__(self, id = '1', name = 'test', desc = 'test desc',
+                attributes = None, armor = None , weapons = None , player = False):
         super().__init__(id, name, desc, attributes, armor, weapons, player)
